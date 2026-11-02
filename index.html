@@ -74,9 +74,9 @@
                     let texto = botao.querySelector("span");
                     texto.textContent = Number(texto.textContent) + 1;
                     
-                    // 2. Desabilita o botão imediatamente no primeiro clique
+                    // 2. Desabilita o botão para que não possa ser clicado novamente
                     botao.disabled = true;
-                });
+                }, { once: true }); // A opção { once: true } remove o escutador de eventos após a primeira execução
             });
         </script>
     </body>
