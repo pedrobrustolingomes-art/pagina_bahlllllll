@@ -28,6 +28,10 @@
             .artigo-autor {
                 font-weight: bold;
             }
+            button:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
         </style>
     </head>
     <body>
@@ -60,14 +64,17 @@
         </main>
 
         <script>
-            // Seleciona todos os botões da página
             const botoes = document.querySelectorAll("button");
 
             botoes.forEach(function (botao) {
+                // { once: true } garante que o evento de clique execute apenas uma vez
                 botao.addEventListener("click", function () {
                     let texto = botao.querySelector("span");
                     texto.textContent = Number(texto.textContent) + 1;
-                });
+                    
+                    // Desabilita o botão para evitar novos cliques
+                    botao.disabled = true;
+                }, { once: true });
             });
         </script>
     </body>
