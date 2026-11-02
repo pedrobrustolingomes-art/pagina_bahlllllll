@@ -28,9 +28,11 @@
             .artigo-autor {
                 font-weight: bold;
             }
+            /* Estilo para quando o botão for desabilitado */
             button:disabled {
-                opacity: 0.6;
+                opacity: 0.5;
                 cursor: not-allowed;
+                pointer-events: none; /* Impede novos eventos de clique via CSS */
             }
         </style>
     </head>
@@ -67,14 +69,14 @@
             const botoes = document.querySelectorAll("button");
 
             botoes.forEach(function (botao) {
-                // { once: true } garante que o evento de clique execute apenas uma vez
                 botao.addEventListener("click", function () {
+                    // 1. Incrementa o contador
                     let texto = botao.querySelector("span");
                     texto.textContent = Number(texto.textContent) + 1;
                     
-                    // Desabilita o botão para evitar novos cliques
+                    // 2. Desabilita o botão imediatamente no primeiro clique
                     botao.disabled = true;
-                }, { once: true });
+                });
             });
         </script>
     </body>
